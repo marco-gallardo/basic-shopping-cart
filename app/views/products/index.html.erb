@@ -1,0 +1,21 @@
+<h1>Products</h1>
+
+<% @products.each do |product| %>
+  <div>
+    <%= form_tag(@cart, method: :put) do %>
+      <%= label_tag product.name %>
+      <%= label_tag product.price %>
+      <%= hidden_field_tag 'product_id', product.id %>
+      <%= button_tag 'Add to cart' %>
+    <% end %>
+  </div>
+<% end %>
+
+
+<h2>Cart</h2>
+<% @cart.product_quantities.each do |product_quantity| %>
+  <div>
+    <%= product_quantity.product.name %>
+    <%= product_quantity.quantity %>
+  <div/>
+<% end %>
